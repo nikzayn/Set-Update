@@ -1,12 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Room extends Component {
+  state = {
+    isLit: true
+  };
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  flipBoard = () => {
+    this.setState({
+      isLit: !this.state.isLit
+    });
+  };
+  render() {
+    const brightness = this.state.isLit ? "lit" : "dark";
+    return (
+      <div className={`room ${brightness}`}>
+          <img
+            src="https://image.flaticon.com/icons/svg/149/149743.svg"
+            width='200px'
+            height='200px'
+          />
+        <br />
+        <button className="rombut" onClick={this.flipBoard}>
+          flip
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Room />, document.getElementById("root"));
