@@ -23,7 +23,7 @@ class Room extends Component {
           />
         <br />
         <button className="rombut" onClick={this.flipBoard}>
-          flip
+          Switch On
         </button>
       </div>
     );
